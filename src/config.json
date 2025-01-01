@@ -1,12 +1,12 @@
 {
   "site": {
-    "url": "", 
+    "url": "https://bakayang.vercel.app", 
     "title": "Bakayang", 
     "description": "CTF Writeups and Solutions", 
     "keywords": "CTF, Writeups, Security, Hacking", 
     "lang": "en", 
-    "favicon": "", 
-    "appleTouchIcon": ""
+    "favicon": "/favicon.ico",
+    "appleTouchIcon": "/apple-touch-icon.png"
   },
   "author": {
     "name": "Your Name", 
