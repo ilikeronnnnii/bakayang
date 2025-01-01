@@ -1,6 +1,6 @@
 ---
 title: Google Beginners Quest
-date: 2024-05-08T10:54:27.000Z
+date: 2024-11-08T10:54:27.000Z
 tags: [Icon]
 category: crypto
 comments: false
@@ -8,6 +8,7 @@ draft: false
 ---
 
 # Crypto Redacted RSA 1
+
 ![](https://github.com/Exberg/ctf-writeups/blob/main/google-beginners_quest/img-gbq/img1.png)
 
 I have a RSA private key, but it is **partially redacted**. Can you recover that? Run `openssl pkeyutl -decrypt -inkey key-recovered.pem -in encrypted.txt -out plaintext.txt` after you have recovered the key.
@@ -18,7 +19,7 @@ First, you turn the Pem to Hex using cyberchef.
 
 ![](https://github.com/Exberg/ctf-writeups/blob/main/google-beginners_quest/img-gbq/img5.png)
 
-Basically, only the bottom part of it was redacted. 
+Basically, only the bottom part of it was redacted.
 So we only need to understand the whole structure:
 
 Structure of PEM in DER
@@ -26,13 +27,16 @@ Structure of PEM in DER
 <img width="500" alt="img4" src="https://github.com/Exberg/ctf-writeups/blob/main/google-beginners_quest/img-gbq/img4.png">
 
 ---
+
 ### ASN.1 Cheatsheets
+
 #### Format: (type) (byte size @ length in bytes)
 
 > [!NOTE]
 > 1 byte = 2 Hex
 
 **Type:**
+
 - `02`: INTEGER
 - `04`: OCTET STRING (a sequence of bytes)
 - `06`: OBJECT IDENTIFIER (like a unique name)
@@ -40,6 +44,7 @@ Structure of PEM in DER
 - `30`: SEQUENCE (a collection of items)
 
 **Byte Size @ length:**
+
 - `82`: the **next 2** bytes are the **length**
 - `03`: 3 bytes
 - `01`: 1 byte
@@ -49,22 +54,26 @@ Structure of PEM in DER
 ![](https://github.com/Exberg/ctf-writeups/blob/main/google-beginners_quest/img-gbq/img3.png)
 
 The first column means:
+
 - `30`: structure type (the whole PEM)
 - `82`: next 2 bytes are the length
 - `0929`: length in hex value
 
 The second column means:
+
 - `02`: integer type
 - `01`: next 1 byte is the length
 - `00`: length 0
 
-Starting from the third column onwards,  **shows the N, e, d, p, q ,... and so on**  
+Starting from the third column onwards, **shows the N, e, d, p, q ,... and so on**
+
 - `02`: integer type
 - `82`: next 2 bytes are the length
 - `0201`: decimal 513 bytes (1026 hexa digits)
 - `009d47...` after `0201` (513 bytes) is the **N modular**
 
 After I extracted the data, I found the complete of n, e, d:
+
 ```
 n = {LARGE_HEX}
 e = 01001 (65537 normal value)
@@ -72,6 +81,7 @@ d = {LARGE_HEX}
 ```
 
 after this just run this code to generate a pem file
+
 ```python
 from Crypto.PublicKey import RSA
 
@@ -89,6 +99,7 @@ with open("key-recovered.pem", "wb") as f:
 ```
 
 alternative without pem file (by neno)
+
 ```python
 Nstr="" # N in string
 dstr="" # d in string
@@ -116,6 +127,7 @@ print("Decrypted Message:", decrypted_message)
 ---
 
 # Crypto Redacted RSA 2
+
 This one is same as RSA 1 but the redaction covered up the middle and the bottom (only parts of it showed).
 
 <img width="549" alt="Screenshot 2024-12-19 at 10 39 52 PM" src="https://github.com/user-attachments/assets/18cd7c2d-3e67-484e-b008-26bbbaee10c0" />
@@ -123,11 +135,13 @@ This one is same as RSA 1 but the redaction covered up the middle and the bottom
 Same strategy, read the Pem in Hex with cyberchef and extract the data:
 
 Here's some useful data extracted:
+
 ```
 n = {LARGE_NUMBER}
 e = {010001} #65537
 dp = d mod (q-1) = {LARGE_NUMBER}
 ```
+
 So, for a valid PEM, I need to get `p` or `q` or `d`.
 
 ## How can we find it without large computing power?
@@ -157,25 +171,25 @@ def find_dp(n, e, dp):
     """
     # Choose a random r
     r = random.randint(2, n - 1)
-    
+
     # Compute r^(e * dp) mod n
     r_exp = pow(r, e * dp, n)
-    
+
     # Compute gcd of n and (r_exp - r)
     factor = gcd(n, r_exp - r)
-    
+
     if factor == 1 or factor == n:
         print("Failed to find a factor. Try again.")
         return None
-    
+
     # Factorization of n: p and q
     p = factor
     q = n // p
-    
+
     # Recover private key components
     phi = (p - 1) * (q - 1)
     d = mod_inverse(e, phi)
-    
+
     return d, p, q
 
 # Example inputs (hexadecimal values)
