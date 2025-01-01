@@ -9,8 +9,11 @@
     "appleTouchIcon": "/apple-touch-icon.png"
   },
   "author": {
-    "name": "Your Name", 
-    "twitterId": "@yourtwitter", 
+    "name": "Bakayang",
+    "twitterId": "@bakayang",
+    "avatar": "https://i.ibb.co/qDYCvBN/kirby.png"
+    "name": "Bakayang", 
+    "twitterId": "@bakayang", 
     "avatar": ""
   },
   "hero": {
@@ -19,9 +22,15 @@
     "description": "Providing detailed writeups and solutions for Capture the Flag challenges.",
     "socials": [
       {
-        "name": "Twitter", 
-        "icon": "icon-twitter", 
-        "url": "https://twitter.com/yourtwitter", 
+        "name": "Github", 
+        "icon": "icon-github", 
+        "url": "https://github.com/Exberg", 
+        "color": "#1DA1F2"
+      },
+      {
+        "name": "LinkedIn", 
+        "icon": "icon-linkedin", 
+        "url": "https://www.linkedin.com/in/patrick-ching-yang-42098333b", 
         "color": "#1DA1F2"
       }
     ],
