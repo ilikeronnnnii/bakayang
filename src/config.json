@@ -22,13 +22,13 @@
         "name": "Github", 
         "icon": "icon-github", 
         "url": "https://github.com/Exberg", 
-        "color": "#1DA1F2"
+        "color": "#FFFFFF"
       },
       {
         "name": "LinkedIn", 
         "icon": "icon-linkedin", 
         "url": "https://www.linkedin.com/in/patrick-ching-yang-42098333b", 
-        "color": "#1DA1F2"
+        "color": "#0e76a8"
       }
     ],
     "yiyan": "Solve, learn, and improve!"
