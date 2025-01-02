@@ -18,6 +18,8 @@ comments: false
 - To work on more **innovative projects** that push the boundaries of creativity and technology.
 - To develop more **mobile apps** focusing on creativity, innovation, and unique user experiences.
 
+<img src="/images/qr-code.png" width="300" height="200" alt="My Cat">a
+
 ## Fun Facts
 
 - I'm not just a tech enthusiast; I’m also exploring **creative fields** like animation and unique mobile apps.
