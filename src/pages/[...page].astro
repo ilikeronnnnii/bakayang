@@ -62,11 +62,11 @@ const getPageUrl = (page: number) => {
       </div>
       <div>
         <aside class="md:sticky md:top-20 space-y-10">
-          <SectionBlock title="分类">
+          <SectionBlock title="Categories">
             <CategoryList categories={allCategories} />
           </SectionBlock>
-          <SectionBlock title="热门标签">
-            <TagList tags={hotTags} />
+          <SectionBlock title="Tags">
+            <TagList tags={hotTags} />  
             {
               allTags.length > hotTags.length && (
                 <div class="mt-2 text-right">

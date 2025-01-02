@@ -1,8 +1,8 @@
 ---
 title: Google Beginners Quest
 date: 2024-11-08T10:54:27.000Z
-tags: [Icon]
-category: crypto
+tags: [Crypto]
+category: CTF
 comments: false
 draft: false
 ---

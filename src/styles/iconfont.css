@@ -86,6 +86,11 @@
   content: '\e7d2';
 }
 
+.icon-linkedin:before {
+  content: '\f08c';
+  font-family: 'FontAwesome';
+}
+
 .icon-down:before {
   content: '\e83d';
 }

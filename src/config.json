@@ -1,10 +1,10 @@
 {
   "site": {
-    "url": "https://bakayang.vercel.app", 
-    "title": "Bakayang", 
-    "description": "CTF Writeups and Solutions", 
-    "keywords": "CTF, Writeups, Security, Hacking", 
-    "lang": "en", 
+    "url": "https://bakayang.vercel.app",
+    "title": "Bakayang",
+    "description": "CTF Writeups and Solutions",
+    "keywords": "CTF, Writeups, Security, Hacking",
+    "lang": "en",
     "favicon": "/favicon.ico",
     "appleTouchIcon": "/apple-touch-icon.png"
   },
@@ -14,21 +14,27 @@
     "avatar": "https://i.ibb.co/qDYCvBN/kirby.png"
   },
   "hero": {
-    "name": "Bakayang", 
-    "bio": "CTF Writeups & Challenges", 
+    "name": "Bakayang",
+    "bio": "CTF Writeups & Challenges",
     "description": "Providing detailed writeups and solutions for Capture the Flag challenges.",
     "socials": [
       {
-        "name": "Github", 
-        "icon": "icon-github", 
-        "url": "https://github.com/Exberg", 
-        "color": "#FFFFFF"
+        "name": "Github",
+        "icon": "icon-github",
+        "url": "https://github.com/Exberg",
+        "color": "rgb(24, 23, 23)"
       },
       {
-        "name": "LinkedIn", 
-        "icon": "icon-linkedin", 
-        "url": "https://www.linkedin.com/in/patrick-ching-yang-42098333b", 
-        "color": "#0e76a8"
+        "name": "LinkedIn",
+        "icon": "icon-linkedin",
+        "url": "https://www.linkedin.com/in/patrick-ching-yang-42098333b",
+        "color": "rgb(14 118 168)"
+      },
+      {
+        "name": "Twitter",
+        "icon": "icon-x",
+        "url": "https://x.com/",
+        "color": "rgb((0 0 0))"
       }
     ],
     "yiyan": "Solve, learn, and improve!"
